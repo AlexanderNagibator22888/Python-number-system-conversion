@@ -1,9 +1,10 @@
 from sys import argv
+from sys import exit
 from math import log
 from pathlib import Path
 
 if len(argv) < 5:
-	exit()
+	exit(1)
 
 file_name = "conventor.txt"
 name = str(Path(__file__).resolve().parents[0] / file_name)
@@ -14,7 +15,7 @@ def args(res):
 	
 	for i in f:
 		if len(i) < 5 or i[1] != ' ':
-			exit()
+			exit(7)
 		if res == i[0]:
 			temp = tuple(i[2::].splitlines())
 			break
@@ -32,7 +33,7 @@ def uncov(x1, x2):
 		if temp == -1:
 			temp = x2.find(i)
 			if temp == -1:
-				exit()
+				exit(8)
 		res = res * ue[0] + temp
 	
 	return res
@@ -81,14 +82,15 @@ def f_out2(res, les, les2, j, out):
 		n_temp = les.find(res[i])
 		if n_temp == -1:
 			n_temp = les2.find(res[i])
-		p_temp = len(res) - i - 1
-		if i != 0:
-			stemp1 += " +"
-			stemp2 += " +"
-		stemp1 += ' ' + str(n_temp);
-		stemp1 += '*' + str(p_temp);
-		stemp1 += '^' + s_temp
-		stemp2 += ' ' + str(n_temp * j ** p_temp)
+		if n_temp != 0:
+			p_temp = len(res) - i - 1
+			if i != 0:
+				stemp1 += " +"
+				stemp2 += " +"
+			stemp1 += ' ' + str(n_temp);
+			stemp1 += '*' + str(p_temp);
+			stemp1 += '^' + s_temp
+			stemp2 += ' ' + str(n_temp * j ** p_temp)
 	print(stemp1, '=', out)
 	print(stemp2, '=', out)
 
@@ -102,24 +104,24 @@ def main():
 		else:
 			uu = 0
 	else:
-		exit()
+		exit(2)
 	
 	if argv[2].isdigit():
 		ue[0] = int(argv[2])
 		if ue[0] > len(ux[0]) or ue[0] < 2:
-			exit()
+			exit(3)
 	else:
-		exit()
+		exit(4)
 	
 	if argv[4].isdigit():
 		ue[1] = int(argv[4])
 		if ue[1] > len(ux[uu]) or ue[1] < 2:
-			exit()
+			exit(5)
 	else:
 		exit()
 	
 	if ue[0] == ue[1] and uu == 0:
-		exit()
+		exit(6)
 	
 	num = uncov(ux[0], ux[1])
 	out = conv(num, ux[uu])
