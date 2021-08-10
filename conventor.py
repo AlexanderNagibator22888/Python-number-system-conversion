@@ -1,5 +1,5 @@
 from sys import argv
-argo = ("PyConventor v1.1 final", "by A. S. Zaykov", "-v --version\tVersion\n-a --about\tAbout\n-h --help\tHelp\n-A --alphabet\tAlphabet\n-d --detail\tDetail\n-D --detail2\tDetail2")
+argo = ("PyConventor v1.1 final", "by A. S. Zaykov", "program (parament) [alphabet [dd]] input-notation number out-notation\nParament's\n-v --version\tVersion\n-a --about\tAbout\n-h --help\tHelp\n-A --alphabet\tAlphabet\n-d --detail\tDetail\n-D --detail2\tDetail2")
 
 if len(argv) == 1:
 	print("No args")
